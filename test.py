@@ -1,2 +1,2 @@
-input_file = open("sample.txt", "r")
+input_file = open("temp.txt", "r")
 print(input_file.read())
