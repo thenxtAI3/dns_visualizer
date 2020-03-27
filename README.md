@@ -9,3 +9,4 @@ Helpful Resources Here:
 
 [test.py]
 - https://www.pythonforbeginners.com/files/reading-and-writing-files-in-python
+- https://stackoverflow.com/questions/7908636/possible-to-make-labels-appear-when-hovering-over-a-point-in-matplotlib
