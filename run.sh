@@ -2,7 +2,7 @@ read -p "Begin process? [Enter]"
 clear
 
 echo "Parsing input file..."
-cat sample.txt
+cat temp.txt
 
 echo
 read -p "File parsed. Run python? [Enter]"

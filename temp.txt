@@ -1,0 +1,48 @@
+;; Warning: Message parser reports malformed message packet.
+
+; <<>> DiG 9.14.11 <<>> +trace +dnssec google.com
+;; global options: +cmd
+.			48111	IN	NS	a.root-servers.net.
+.			48111	IN	NS	b.root-servers.net.
+.			48111	IN	NS	c.root-servers.net.
+.			48111	IN	NS	d.root-servers.net.
+.			48111	IN	NS	e.root-servers.net.
+.			48111	IN	NS	f.root-servers.net.
+.			48111	IN	NS	g.root-servers.net.
+.			48111	IN	NS	h.root-servers.net.
+.			48111	IN	NS	i.root-servers.net.
+.			48111	IN	NS	j.root-servers.net.
+.			48111	IN	NS	k.root-servers.net.
+.			48111	IN	NS	l.root-servers.net.
+.			48111	IN	NS	m.root-servers.net.
+;; Received 512 bytes from 192.168.1.1#53(192.168.1.1) in 118 ms
+
+com.			172800	IN	NS	e.gtld-servers.net.
+com.			172800	IN	NS	b.gtld-servers.net.
+com.			172800	IN	NS	j.gtld-servers.net.
+com.			172800	IN	NS	m.gtld-servers.net.
+com.			172800	IN	NS	i.gtld-servers.net.
+com.			172800	IN	NS	f.gtld-servers.net.
+com.			172800	IN	NS	a.gtld-servers.net.
+com.			172800	IN	NS	g.gtld-servers.net.
+com.			172800	IN	NS	h.gtld-servers.net.
+com.			172800	IN	NS	l.gtld-servers.net.
+com.			172800	IN	NS	k.gtld-servers.net.
+com.			172800	IN	NS	c.gtld-servers.net.
+com.			172800	IN	NS	d.gtld-servers.net.
+com.			86400	IN	DS	30909 8 2 E2D3C916F6DEEAC73294E8268FB5885044A833FC5459588F4A9184CF C41A5766
+com.			86400	IN	RRSIG	DS 8 1 86400 20200409050000 20200327040000 33853 . q92M2iNCRWcXMzwn+oodC6eyg2GMjna6vZNIfUrgBpK45nmswc6o5oCT pUBY5VkBXtifkLB9paVYIdFJUfeO9N17WiLpAgNQ0kQvbBzHct2pag/c M6FiphlfreDO3bEh/rkEIikFeF0fktluOBPG43+9fpTryJNuleliigPM aITiasKzyPyRdbH+uI4JycjCKq+l31KOD4t9bQuWsptSsPQaN+mohzt5 cm6fSs8lkwdZTt2rNGVoBSI4kN006fp1uSKXHjLFexd4YNPSHrUZ/eaE nsxY54ZlfO0c+nDvonsh+Jj3ZbUsMrBzM9DPhD0Uk6v/ojn6qdchpmit 0/7mXg==
+;; Received 1170 bytes from 198.41.0.4#53(a.root-servers.net) in 26 ms
+
+google.com.		172800	IN	NS	ns2.google.com.
+google.com.		172800	IN	NS	ns1.google.com.
+google.com.		172800	IN	NS	ns3.google.com.
+google.com.		172800	IN	NS	ns4.google.com.
+CK0POJMG874LJREF7EFN8430QVIT8BSM.com. 86400 IN NSEC3 1 1 0 - CK0Q1GIN43N1ARRC9OSM6QPQR81H5M9A NS SOA RRSIG DNSKEY NSEC3PARAM
+CK0POJMG874LJREF7EFN8430QVIT8BSM.com. 86400 IN RRSIG NSEC3 8 2 86400 20200403045024 20200327034024 56311 com. c6uPvcETse+c/D/ZkGPqZKIJwJ4z+XjCD7UjBR12FuskCK2Uo1jBx7F5 YIAcE+Peh5eQkX5qrTEkK/X5x2PnBxfGpW8txZ+J76nwreB96VZg2fld tGndAnEda8/ohuJHmnsPDzdY6D8uVZC9FbTvSCkYVLMouZWPuPICqDeR BlkpkIucF5/eEtXkMaF258HInTGrUwrwB2wwzqLklqTFUg==
+S84BDVKNH5AGDSI7F5J0O3NPRHU0G7JQ.com. 86400 IN NSEC3 1 1 0 - S84EDELLAUPA96DT12TJKJN32334NGL3 NS DS RRSIG
+S84BDVKNH5AGDSI7F5J0O3NPRHU0G7JQ.com. 86400 IN RRSIG NSEC3 8 2 86400 20200331044859 20200324033859 56311 com. CB8k9o8RfRC4MINPxkq9GltcEEzVce0g8B2kVlwzR324OfUXUckd7DdG a1u2u9Li5gAQt4C95A+Sf1MMC9+f7KPezYalycJJ7Fs8QJXBl/kq3gge RgDQ8kLa7TYvNKXOA/CRZUwLc2XI+/6i0JCcEPEPtgFQM3T0YtOHjGdV Vj6rH5lWyR6UFHZGgZgclSJg35Byg9D4seTy2/fH6Qw9gQ==
+;; Received 836 bytes from 192.55.83.30#53(m.gtld-servers.net) in 24 ms
+
+google.com.		300	IN	A	172.217.164.110
+;; Received 55 bytes from 216.239.32.10#53(ns1.google.com) in 54 ms
