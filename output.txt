@@ -1,0 +1,82 @@
+
+; <<>> DiG 9.10.6 <<>> $ recordType opensecrets.org +noadditional +noquestion +nocomments +nocmd +nostats
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 21932
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;\$.				IN	A
+
+;; ANSWER SECTION:
+\$.			10	IN	A	23.217.138.110
+\$.			10	IN	A	23.202.231.169
+
+;; Query time: 26 msec
+;; SERVER: 192.168.1.254#53(192.168.1.254)
+;; WHEN: Fri Apr 10 02:39:48 PDT 2020
+;; MSG SIZE  rcvd: 62
+
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 60422
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;recordType.			IN	A
+
+;; ANSWER SECTION:
+recordType.		10	IN	A	23.217.138.110
+recordType.		10	IN	A	23.202.231.169
+
+;; Query time: 20 msec
+;; SERVER: 192.168.1.254#53(192.168.1.254)
+;; WHEN: Fri Apr 10 02:39:48 PDT 2020
+;; MSG SIZE  rcvd: 71
+
+opensecrets.org.	300	IN	A	104.20.70.144
+opensecrets.org.	300	IN	A	104.20.71.144
+
+; <<>> DiG 9.10.6 <<>> $ recordType opensecrets.org +noadditional +noquestion +nocomments +nocmd +nostats
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 16403
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;\$.				IN	A
+
+;; ANSWER SECTION:
+\$.			10	IN	A	23.202.231.169
+\$.			10	IN	A	23.217.138.110
+
+;; Query time: 55 msec
+;; SERVER: 192.168.1.254#53(192.168.1.254)
+;; WHEN: Fri Apr 10 02:39:48 PDT 2020
+;; MSG SIZE  rcvd: 62
+
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 9045
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;recordType.			IN	A
+
+;; ANSWER SECTION:
+recordType.		10	IN	A	23.202.231.169
+recordType.		10	IN	A	23.217.138.110
+
+;; Query time: 20 msec
+;; SERVER: 192.168.1.254#53(192.168.1.254)
+;; WHEN: Fri Apr 10 02:39:48 PDT 2020
+;; MSG SIZE  rcvd: 71
+
+opensecrets.org.	300	IN	A	104.20.70.144
+opensecrets.org.	300	IN	A	104.20.71.144
