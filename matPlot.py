@@ -2,52 +2,44 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from matplotlib.offsetbox import OffsetImage, AnnotationBbox
+import math
 
-sns.set(style="ticks")
+#index_col treats the first column of the dataset as the id, written as a backup
+df = pd.read_csv('backup.txt', index_col=0, encoding= 'unicode_escape')
 
-# Create a dataset with many short random walks
-rs = np.random.RandomState(4)
-pos = rs.randint(-1, 2, (20, 5)).cumsum(axis=1)
-pos -= pos[:, 0, np.newaxis]
-step = np.tile(range(5), 20)
-walk = np.repeat(range(20), 5)
-df = pd.DataFrame(np.c_[pos.flat, step, walk], columns=["position", "step", "walk"])
+#reading from a data file, cross your fingers and hope it works
+#df = pd.read_csv('temp.txt', delimiter= '\s+', index_col = 1, skiprows=[0,1,2,3,17,32,33,34,35,36], encoding= 'unicode_escape')
 
-# Initialize a grid of plots with an Axes for each walk
-grid = sns.FacetGrid(df, col="walk", hue="walk", palette="tab20c", col_wrap=4, height=1.5)
+sns.set(style="white")
+#sns_plot = sns.lmplot(x='Attack', y='Defense', data=df, fit_reg=False)
 
-# Draw a line plot to show the trajectory of each random walk
-grid.map(plt.plot, "step", "position", marker="o")
+serverImage = OffsetImage(plt.imread('server.png'), zoom=0.05)
+x = df["Step"]
+y = df["Time"]
+fig, ax = plt.subplots()
+ax.scatter(x, y, marker="None")
+ax.plot(x, y)
 
-# Adjust the tick positions and labels
-grid.set(xticks=np.arange(5), yticks=[-3, 3], xlim=(-.5, 4.5), ylim=(-3.5, 3.5))
+props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
 
-# Adjust the arrangement of the plots
-grid.fig.tight_layout(w_pad=1)
-grid.savefig("output.png")
+for x0, y0 in zip(x, y):
+    ab = AnnotationBbox(serverImage, (x0, y0), frameon=False)
+    ax.add_artist(ab)
+#    ax.annotate(s='', xy = (x0, y0), arrowprops=dict(arrowstyle="->"))
+    
+#formatting
+ax.set_xlabel('Steps')
+ax.set_ylabel('Time(ms)')
+plt.ylim(0,200)
+xint = range(min(x)-1, math.ceil(max(x))+2)
+plt.xticks(xint)
 
+#plt.quiver(x[:-1], y[:-1], x[1:]-x[:-1], y[1:]-y[:-1], y[1:]-x[:-1], scale_units='xy', angles='xy', scale=1)
 
-#Simple Grid
-# x axis values
-# x = [1,2,3]
-# corresponding y axis values
-# y = [2,4,1]
-# plt.plot(x,y)
-#plt.savefig("output.png")
+textstr = 'IP:192.168.1.1\nType:Server\nRuntime:118ms'
+props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
+ax.text(0.27, 0.63, textstr, transform=ax.transAxes, fontsize=10, verticalalignment='top', bbox=props)
 
-#def getImage(path):
-#    return OffsetImage(plt.imread(path))
-#
-#paths = [
-#    'server.png',
-#    'host.png',]
-#
-#x = [0,1,2,3,4]
-#y = [0,1,2,3,4]
-#
-#fig, ax = plt.subplots()
-#ax.scatter(x, y)
-#
-#for x0, y0, path in zip(x, y,paths):
-#    ab = AnnotationBbox(getImage(path), (x0, y0), frameon=False)
-#    ax.add_artist(ab)
+#sns_plot.savefig("output.png")
+fig.savefig("output.png")
