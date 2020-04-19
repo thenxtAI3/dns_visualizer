@@ -1,53 +1,68 @@
+#!/usr/bin/env python
 import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-
-sns.set(style="ticks")
-
-# Create a dataset with many short random walks
-rs = np.random.RandomState(4)
-pos = rs.randint(-1, 2, (20, 5)).cumsum(axis=1)
-pos -= pos[:, 0, np.newaxis]
-step = np.tile(range(5), 20)
-walk = np.repeat(range(20), 5)
-df = pd.DataFrame(np.c_[pos.flat, step, walk], columns=["position", "step", "walk"])
-
-# Initialize a grid of plots with an Axes for each walk
-grid = sns.FacetGrid(df, col="walk", hue="walk", palette="tab20c", col_wrap=4, height=1.5)
-
-# Draw a line plot to show the trajectory of each random walk
-grid.map(plt.plot, "step", "position", marker="o")
-
-# Adjust the tick positions and labels
-grid.set(xticks=np.arange(5), yticks=[-3, 3], xlim=(-.5, 4.5), ylim=(-3.5, 3.5))
-
-# Adjust the arrangement of the plots
-grid.fig.tight_layout(w_pad=1)
-grid.savefig("output.png")
+from matplotlib.offsetbox import OffsetImage, AnnotationBbox
+import math
+import json
+import ipaddress
 
 
-#Simple Grid
-# x axis values
-# x = [1,2,3]
-# corresponding y axis values
-# y = [2,4,1]
-# plt.plot(x,y)
-#plt.savefig("output.png")
+class Node:
+    def __init__(self, id, stats):
+        self.id = id
+        self.stats = stats
+class NodeList:
+    def __init__(self, path_to_file):
+        self.path_to_file = path_to_file
+        self.nodes = []
+    def initializeList(self):
+        #reads from file and puts into a dictionary
+        #with open('test.json') as json_file:
+            #data = json.load(json_file.read())
+        #n1 = Node(1, "I am the first node")
+        #self.node.append(n1)
+        print("Type")
+    def getNodeIds(self):
+        ids = [] #ip addresses
+        for node in self.nodes:
+            ids.append(node.id)
+            return ids
+    def size(self):
+        return len(self.nodes)
 
-#def getImage(path):
-#    return OffsetImage(plt.imread(path))
-#
-#paths = [
-#    'server.png',
-#    'host.png',]
-#
-#x = [0,1,2,3,4]
-#y = [0,1,2,3,4]
-#
-#fig, ax = plt.subplots()
-#ax.scatter(x, y)
-#
-#for x0, y0, path in zip(x, y,paths):
-#    ab = AnnotationBbox(getImage(path), (x0, y0), frameon=False)
-#    ax.add_artist(ab)
+df = pd.read_csv('backup.txt', encoding= 'unicode_escape')
+
+sns.set(style="white")
+serverImage = OffsetImage(plt.imread('server.png'), zoom=0.05)
+
+for i, row in df.iterrows():
+    ip = ipaddress.ip_address(df.loc[i,"Address"])
+    df.loc[i,"Address"]  = int(ip)
+#print(df.columns)
+x = df["Step"]
+y = df["Address"]
+fig, ax = plt.subplots()
+ax.scatter(x, y, marker="None")
+ax.plot(x, y)
+
+props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
+
+for x0, y0 in zip(x, y):
+    ab = AnnotationBbox(serverImage, (x0, y0), frameon=False)
+    ax.add_artist(ab)
+#    ax.annotate(s='', xy = (x0, y0), arrowprops=dict(arrowstyle="->"))
+    
+#formatting
+ax.set_xlabel('Node Index') #order read
+ax.set_ylabel('Node ID') #ip address
+#plt.ylim(0,200)
+xint = range(min(x)-1, math.ceil(max(x))+2)
+plt.xticks(xint)
+
+#textstr = 'IP:192.168.1.1\nType:Server\nRuntime:118ms'
+#props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
+#ax.text(0.27, 0.63, textstr, transform=ax.transAxes, fontsize=10, verticalalignment='top', bbox=props)
+
+fig.savefig("output.png")
