@@ -6,14 +6,13 @@ import matplotlib.pyplot as plt
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 import math
 import json
-import ipaddress
 
 class Node:
-    def __init__(self, id, stats):
+    def __init__(self, id, address):
         self.id = id
-        self.stats = stats
+        self.address = address
     def __repr__(self):
-        return "Node id:% s stats:% s" % (self.id, self.stats)
+        return "Node id:% s address:% s" % (self.id, self.address)
 class NodeList:
     def __init__(self, path_to_file):
         self.path_to_file = path_to_file
@@ -23,73 +22,58 @@ class NodeList:
         #reads from file and puts into a dictionary
         with open(self.path_to_file) as json_file:
             self.data = json.load(json_file)
-        n1 = Node(1, self.data['google.com.']['clients_ipv4'][0])
-        self.nodes.append(n1)
-        i=2
+        ip_mapping = {}
+        self.nodes.append(Node(1, self.data['google.com.']['clients_ipv4'][0]))
+        ip_mapping[self.data['google.com.']['clients_ipv4'][0]] = 1
         queries = self.data['google.com.']['queries']
         for query in queries:
-            #getting the first ip address from each response
-            ipResp = list(query['responses'].keys())[0]
-            n = Node(i, ipResp)
-            self.nodes.append(n)
-            i+=1
+            responses = query['responses']
+            for ip, message in responses.items():
+                if ip not in ip_mapping.keys():
+                    ip_mapping[ip] = len(ip_mapping)+1
+                    self.nodes.append(Node(ip_mapping[ip], ip))
+                print(len(ip_mapping))
         print(self.nodes)
     def getNodeIds(self):
         ids = []
         for node in self.nodes:
             ids.append(node.id)
-        print(ids)
+        return ids
+    def getAddress(self):
+        addresses = []
+        for node in self.nodes:
+            addresses.append(node.address)
+        return addresses
     def getCoordinates(self):
         coordinates = []
         for node in self.nodes:
-            coordinates.append((node.id,node.stats))
+            coordinates.append((node.id,node.address))
         print(coordinates)
     def size(self):
         return len(self.nodes)
 sample = NodeList("test.json")
 sample.initializeList()
-sample.getNodeIds()
-sample.getCoordinates()
 
+sns.set(style="white")
+serverImage = OffsetImage(plt.imread('server.png'), zoom=0.05)
 
-#df = pd.read_csv('backup.txt', encoding= 'unicode_escape')
-#
-#sns.set(style="white")
-#serverImage = OffsetImage(plt.imread('server.png'), zoom=0.05)
-#
-##for i, row in df.iterrows():
-##    ip = ipaddress.ip_address(df.loc[i,"Address"])
-##    df.loc[i,"Address"]  = int(ip)
-##print(df.columns)
-#x = df["Step"]
-#y = df["Address"]
-#fig, ax = plt.subplots()
-#ax.scatter(x, y, marker="None")
-#ax.plot(x, y)
-#
-#props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
-#
-#for x0, y0 in zip(x, y):
-#    ab = AnnotationBbox(serverImage, (x0, y0), frameon=False)
-#    ax.add_artist(ab)
-##    ax.annotate(s='', xy = (x0, y0), arrowprops=dict(arrowstyle="->"))
-#
-##formatting
-#ax.set_xticklabels(df[0])
-#ax.set_yticklabels(df[1])
-#ax.set_xticks(df["Step"])
-#ax.set_yticks(df["Address"])
-#ax.set_xlabel('Node Index') #order read
-#ax.set_ylabel('Node ID') #ip address
-##plt.ylim(0,200)
-#xint = range(min(x)-1, math.ceil(max(x))+2)
-#plt.xticks(xint)
-#
-##textstr = 'IP:192.168.1.1\nType:Server\nRuntime:118ms'
-##props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
-##ax.text(0.27, 0.63, textstr, transform=ax.transAxes, fontsize=10, verticalalignment='top', bbox=props)
-#
-#fig.savefig("output.png")
+x = sample.getNodeIds()
+y = sample.getAddress()
+fig, ax = plt.subplots()
+ax.scatter(x, y, marker="None")
+ax.plot(x, y)
 
+props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
 
+for x0, y0 in zip(x, y):
+    ab = AnnotationBbox(serverImage, (x0, y0), frameon=False)
+    ax.add_artist(ab)
+
+ax.set_xlabel('Node ID') #order read
+ax.set_ylabel('Node Address') #ip address
+xint = range(min(x)-1, math.ceil(max(x))+2)
+plt.xticks(xint)
+#plt.ylim(0.0.0.0, 255.255.255.255)
+
+fig.savefig("output.png")
 
