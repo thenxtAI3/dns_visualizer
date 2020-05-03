@@ -1,15 +1,16 @@
-read -p "Begin process? [Enter]"
-clear
+#!/bin/bash
 
-echo "Parsing input file..."
-cat temp.txt
+read -p 'Enter query: ' query
 
-echo
-read -p "File parsed. Run python? [Enter]"
-clear
+echo 'Running probe...'
 
-python test.py
+dnsviz probe -d 3 -p $query > rec.json
+dnsviz probe -d 3 -p -A -a '.' $query > aut.json
 
-echo
-read -p "Python complete. Good day! [Enter]"
-clear
+echo 'Probe complete.'
+
+echo 'Running script...'
+
+python graph.py $query
+
+echo 'Thanks for playing!'

@@ -1,0 +1,675 @@
+{
+    ".": {
+        "type": "recursive",
+        "stub": false,
+        "cookie_standin": "cccccccccccccccc",
+        "cookie_bad": "bbbbbbbbbbbbbbbb",
+        "analysis_start": "2020-05-03 05:15:36 UTC",
+        "analysis_end": "2020-05-03 05:15:36 UTC",
+        "clients_ipv4": [
+            "192.168.1.65"
+        ],
+        "clients_ipv6": [],
+        "cookie_rdtype": "NS",
+        "explicit_delegation": true,
+        "auth_ns_ip_mapping": {
+            "ns0.": [
+                "192.168.1.254"
+            ]
+        },
+        "queries": [
+            {
+                "qname": ".",
+                "qclass": "IN",
+                "qtype": "NS",
+                "options": {
+                    "flags": 256,
+                    "edns_version": 0,
+                    "edns_max_udp_payload": 4096,
+                    "edns_flags": 32768,
+                    "edns_options": [
+                        [
+                            10,
+                            "a1bfcf40811d419a"
+                        ]
+                    ],
+                    "tcp": false
+                },
+                "responses": {
+                    "192.168.1.254": {
+                        "192.168.1.65": {
+                            "message": "hhGBgAABAA4AAAABAAACAAEAAAIAAQAC6A8AFAFsDHJvb3Qtc2VydmVycwNuZXQAAAACAAEAAugPAAQBbcAeAAACAAEAAugPAAQBYcAeAAACAAEAAugPAAQBZ8AeAAACAAEAAugPAAQBZMAeAAACAAEAAugPAAQBacAeAAACAAEAAugPAAQBYsAeAAACAAEAAugPAAQBaMAeAAACAAEAAugPAAQBZsAeAAACAAEAAugPAAQBY8AeAAACAAEAAugPAAQBZcAeAAACAAEAAugPAAQBa8AeAAACAAEAAugPAAQBasAeAAAuAAEAAugPARMAAggAAAfpAF6+IdBerPBAvwcAdGTnT7OISNAcz0hcLgOXqLpvSAMJBWDpi1XSSvWpVekIo3ZOwfOHqMdJDcZlGtmC4QfU7YXJi9LBVdCI57v9AbL8uyOJhCFVPmmjXoZvijZ9toPdOu0YMdBQG2y5ToXinStHcZGeICNUYpwPyuNs+ulK7smJd7Co4N5y5V3tV+SO9wmVQNou3TIrUUX6KQ7DmyPBmoFIs24wy4NeQ/q547QZgSff7LUP5rJMwxQhPwy3V3FcaMSbJfHFu5uO3WIHXS98i6HNVw/8G02xhHsTBtj3NVsXzOB1Wfu4NERzka+Tle53jeK4TZnGWdXldnw4/729RVVVpfF4KpGtj3UQpwAAKRAAAACAAAAA",
+                            "msg_size": 525,
+                            "time_elapsed": 18,
+                            "history": []
+                        }
+                    }
+                }
+            },
+            {
+                "qname": ".",
+                "qclass": "IN",
+                "qtype": "DNSKEY",
+                "options": {
+                    "flags": 256,
+                    "edns_version": 0,
+                    "edns_max_udp_payload": 4096,
+                    "edns_flags": 32768,
+                    "edns_options": [
+                        [
+                            10,
+                            "a1bfcf40811d419acccccccccccccccc"
+                        ]
+                    ],
+                    "tcp": false
+                },
+                "responses": {
+                    "192.168.1.254": {
+                        "192.168.1.65": {
+                            "message": "O/iBgAABAAMAAAABAAAwAAEAADAAAQABlEoBCAEAAwgDAQABziqxyInkx0xQi7if+lJOxKJT04LIBqc9N7lNwxfi/WHGGkXCJMZBS/cFdPogA7iWK2tkpNRqPi+K2odbX5FCwefeT+BK+3sXDJDCnLSYSdKEGCvpFCIa2UE4M1jruxOX5bwz9vpItMBpoOuLcE7m7rCsOzXj2swQskB2hUGOZdb7NEfeRnOHeXDJNmxi2Tsv7cNhtOKIer6xEHgX1egE8DPk+y/irgSI+rTudbdpxtbzjNPPcLJBSZCQlP1UHWhQofPqw2jJxyrNwxfirUYcBilDsUBeUozGJ2g3UDLkNYA2BOaAlfMqFwjachmirXHfKrjzXg7UtB31A/ryAjfv7QAAMAABAAGUSgEIAQEDCAMBAAGs/7QJvMk5+DH3oeXsiPelklXsUwQL5DICc5Ckzoltb5CG88Xhd/v+EYFjqux68UYsR5RZRMTiwCa+Xpi7ze0ll4Jy4ePgecUJTVc/DoPJLwKzLTUTsVULgmkpyA3Q+Syslm0Xdp/VhntkfD84Apq9xIFS648gcVnsxdIyx8FTfHn0t6wo/xFoLyFoG/bWq6VVAyv2+fA2vrKqpbN3jW7r+6a/nqGRvkqwyup1ni93Oh+QKcc+y41XNbkyHbCF8bji2AOP4pQZklSM7g1n3UVH4R3WOvnJ/BxUZvtoTPAJ1xl8LPeeeSq1AeaoocpRmvLLm19jZ+lMDUdQJFE1e+G1AAAuAAEAAZRKARMAMAgAAAKjAF7HFgBeq2aAT2YAnY+ayz+5+zN4g0SHxP9iVvzDSPjHhBBmfSD0TZ1mvW89pqiK8+4A4KZ24EPFmerQKRgphf81HLnB8szlQEsxSEM30PEUPG2JZDyOJ52hizvXFHHYm2f+EoNus1O0qlEaM5bNO2nP/CDvRHOTPSlBtghply7Wp10wfnumU5CQMarwU7IZCFka7ITAar0S3m7QxngkHQRRvHPVIZdvZN+VcZoT/YpExt7FJ/mZFC7c9wZAR4tRX3VNgWfvY1pFDDwBxJE7/sI9nWozb4bZLkBBqe5cBAiVdOJS2knbj9B+eRmiVe24nqIjgaxGWVQGCXHI56bPjx7VvUMtEWei5TbAbQAAKRAAAACAAAAA",
+                            "msg_size": 864,
+                            "time_elapsed": 17,
+                            "history": []
+                        }
+                    }
+                }
+            },
+            {
+                "qname": ".",
+                "qclass": "IN",
+                "qtype": "DNSKEY",
+                "options": {
+                    "flags": 256,
+                    "edns_version": 0,
+                    "edns_max_udp_payload": 512,
+                    "edns_flags": 32768,
+                    "edns_options": [
+                        [
+                            10,
+                            "a1bfcf40811d419acccccccccccccccc"
+                        ]
+                    ],
+                    "tcp": false
+                },
+                "responses": {
+                    "192.168.1.254": {
+                        "192.168.1.65": {
+                            "message": "H36DgAABAAAAAAABAAAwAAEAACkQAAAAgAAAAA==",
+                            "msg_size": 28,
+                            "time_elapsed": 17,
+                            "history": []
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    "com.": {
+        "type": "recursive",
+        "stub": false,
+        "cookie_standin": "cccccccccccccccc",
+        "cookie_bad": "bbbbbbbbbbbbbbbb",
+        "analysis_start": "2020-05-03 05:15:36 UTC",
+        "analysis_end": "2020-05-03 05:15:36 UTC",
+        "clients_ipv4": [
+            "192.168.1.65"
+        ],
+        "clients_ipv6": [],
+        "parent": ".",
+        "cookie_rdtype": "NS",
+        "explicit_delegation": true,
+        "auth_ns_ip_mapping": {
+            "ns0.": [
+                "192.168.1.254"
+            ]
+        },
+        "queries": [
+            {
+                "qname": "com.",
+                "qclass": "IN",
+                "qtype": "NS",
+                "options": {
+                    "flags": 256,
+                    "edns_version": 0,
+                    "edns_max_udp_payload": 4096,
+                    "edns_flags": 32768,
+                    "edns_options": [
+                        [
+                            10,
+                            "a1bfcf40811d419a"
+                        ]
+                    ],
+                    "tcp": false
+                },
+                "responses": {
+                    "192.168.1.254": {
+                        "192.168.1.65": {
+                            "message": "aCeBgAABAA4AAAABA2NvbQAAAgABwAwAAgABAAGY7AAUAW0MZ3RsZC1zZXJ2ZXJzA25ldADADAACAAEAAZjsAAQBZ8AjwAwAAgABAAGY7AAEAWXAI8AMAAIAAQABmOwABAFhwCPADAACAAEAAZjsAAQBa8AjwAwAAgABAAGY7AAEAWjAI8AMAAIAAQABmOwABAFiwCPADAACAAEAAZjsAAQBZMAjwAwAAgABAAGY7AAEAWbAI8AMAAIAAQABmOwABAFjwCPADAACAAEAAZjsAAQBacAjwAwAAgABAAGY7AAEAWzAI8AMAAIAAQABmOwABAFqwCPADAAuAAEAAqLqALcAAggBAAKjAF62Nk9erOtnm6QDY29tAGFHhTiqIc2IPPHydHIm2FiYryS7qQSPw4CaR112HGRfupayWmGKyEeUcPCFgoWtPg/InmJ0XU8NdBbG/RRC0/zBauc9Pz/34jfoZx7gb5lErnqCrQqyX+zriMpoZ+dItY279N/m+ptXtKp9KymLO6LnQfF+xEtjHFbZD74545UVD/DgxGwowx4RO/Y8UF2e/YH4jXTaFHkQypUeOFQh1UsAACkQAAAAgAAAAA==",
+                            "msg_size": 451,
+                            "time_elapsed": 18,
+                            "history": []
+                        }
+                    }
+                }
+            },
+            {
+                "qname": "com.",
+                "qclass": "IN",
+                "qtype": "DS",
+                "options": {
+                    "flags": 256,
+                    "edns_version": 0,
+                    "edns_max_udp_payload": 4096,
+                    "edns_flags": 32768,
+                    "edns_options": [
+                        [
+                            10,
+                            "a1bfcf40811d419acccccccccccccccc"
+                        ]
+                    ],
+                    "tcp": false
+                },
+                "responses": {
+                    "192.168.1.254": {
+                        "192.168.1.65": {
+                            "message": "J06BgAABAAIAAAABA2NvbQAAKwABwAwAKwABAABCxAAkeL0IAuLTyRb23urHMpToJo+1iFBEqDP8VFlYj0qRhM/EGldmwAwALgABAABCxAETACsIAQABUYBeviHQXqzwQL8HAHCT0FTYkkjm6SqtzXjhqSRk2QIxYA5FPIWekhkraJPSb6TTO7W+7aG8B2i8pfsQ8GNQqjV3IgD6cjMTG4xlglkI56F1K3vOJPFnT7m1rNMX/TYBwwi3yo3tWwAle8uwAgKrdqUPa27YX+zWnLjfZan3Le++ulqPbY+NLBS6gQbU5X/PsPKUNaMLZ7mykAdC628WlkUrxuRecVKPM7P/uyk4uCOuvNqSBreUY9C23JccM0ZAoH+ab7sLBgEJfLYQCukKuXDF7YsCxyu0jXHXMrdVi2DBLKL8+lCgfNAp6bRGfBktwUbh+DXqsprC5yGMOlK9nZGY5T+FjDZSGetRarsAACkQAAAAgAAAAA==",
+                            "msg_size": 367,
+                            "time_elapsed": 18,
+                            "history": []
+                        }
+                    }
+                }
+            },
+            {
+                "qname": "com.",
+                "qclass": "IN",
+                "qtype": "DNSKEY",
+                "options": {
+                    "flags": 256,
+                    "edns_version": 0,
+                    "edns_max_udp_payload": 4096,
+                    "edns_flags": 32768,
+                    "edns_options": [
+                        [
+                            10,
+                            "a1bfcf40811d419acccccccccccccccc"
+                        ]
+                    ],
+                    "tcp": false
+                },
+                "responses": {
+                    "192.168.1.254": {
+                        "192.168.1.65": {
+                            "message": "UJqBgAABAAMAAAABA2NvbQAAMAABwAwAMAABAABJZAEGAQEDCAEDw85XTZjL2RV+DXDSdLhJyg4O7Zr/xdzMkEdJaQZlXDXLCLM8TRcbAXyjVvSWAmKqYpPN+uixO1WyHDUc36dofTjvB0Zfh/hNPM2rivJO3r1hJrv+qHftm6IID6IhHxjcrzT2kiOxTiK6A7J8P7WoIMx0V9We0jojoj1jzSMElMljme/VZnENRi5AujZWLxtx8GJsp0L+qBcBr/yhC0sO2Una200NB172W6jFCOwWjLJJr4JtRu6CmdWIhezvYqFTXNPuwEm6pmTe2ffBBlP0IdivwYFHvB7NF1XHTyq7cmJ6EB3dspyj3DDJUxIodv9hwx40TydmssCKSjZ7+KD6P8AMADAAAQAASWQAqAEAAwgDAQABtsVzV+OQEJLJyG3tqH155FqW2csMraxXKjGSMLrMHOb/lIaB8Mb8fpcS6lPty2AK+ep7FqKdMh9ryecFgI60B5zsZ3W9voT/dJeSCINoxQleZ23wTuhu1VmqMWU3ZA2dOWN8yIQKfXqtleW9ciLbnlPXAWRa2nn4tQKK5+wtN4pz3FtDDvLS5yxH4YrPjIRK1tiL3x+cHmc7PNaFFRyV/cAMAC4AAQAASWQBFwAwCAEAAVGAXrhG1V6kfyl4vQNjb20AJOFbuBzXVQuEAuzXfbpQwfHdVOORNzpOe+ihpfokWHO9WrZf5sf6rSG8cj0LWMzsQp+R9Vxg6v3YiwUiB4sQN37Tmqd6JbCbG381BxN/vn+22Sg1DCZVYirhTXCnBnlH7JMAZFftd0IJybhNWqZhld7vSuct677QncXxl/unhb4dD0rBWRqqCqypN4aitm9Rud7lOUtf4nb7w14m/J7PSGqBlNgSlIDn3AWrIZFTq8QrLrFqn/C8EaihN+yDls0vW5hveu2eCzyseiTTdJEseCChAEYWy1UnJDEDUBx67Oxc4Fbl/kXGJMYN5Dzepj1UJ4XXFd8rOfsLlgudTZ/eHgAAKRAAAACAAAAA",
+                            "msg_size": 777,
+                            "time_elapsed": 17,
+                            "history": []
+                        }
+                    }
+                }
+            },
+            {
+                "qname": "com.",
+                "qclass": "IN",
+                "qtype": "DNSKEY",
+                "options": {
+                    "flags": 256,
+                    "edns_version": 0,
+                    "edns_max_udp_payload": 512,
+                    "edns_flags": 32768,
+                    "edns_options": [
+                        [
+                            10,
+                            "a1bfcf40811d419acccccccccccccccc"
+                        ]
+                    ],
+                    "tcp": false
+                },
+                "responses": {
+                    "192.168.1.254": {
+                        "192.168.1.65": {
+                            "message": "7siDgAABAAAAAAABA2NvbQAAMAABAAApEAAAAIAAAAA=",
+                            "msg_size": 32,
+                            "time_elapsed": 17,
+                            "history": []
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    "google.com.": {
+        "type": "recursive",
+        "stub": false,
+        "cookie_standin": "cccccccccccccccc",
+        "cookie_bad": "bbbbbbbbbbbbbbbb",
+        "analysis_start": "2020-05-03 05:15:36 UTC",
+        "analysis_end": "2020-05-03 05:15:36 UTC",
+        "clients_ipv4": [
+            "192.168.1.65"
+        ],
+        "clients_ipv6": [],
+        "parent": "com.",
+        "cookie_rdtype": "A",
+        "explicit_delegation": true,
+        "auth_ns_ip_mapping": {
+            "ns0.": [
+                "192.168.1.254"
+            ]
+        },
+        "queries": [
+            {
+                "qname": "google.com.",
+                "qclass": "IN",
+                "qtype": "NS",
+                "options": {
+                    "flags": 256,
+                    "edns_version": 0,
+                    "edns_max_udp_payload": 4096,
+                    "edns_flags": 32768,
+                    "edns_options": [
+                        [
+                            10,
+                            "a1bfcf40811d419acccccccccccccccc"
+                        ]
+                    ],
+                    "tcp": false
+                },
+                "responses": {
+                    "192.168.1.254": {
+                        "192.168.1.65": {
+                            "message": "o9iBgAABAAQAAAABBmdvb2dsZQNjb20AAAIAAcAMAAIAAQABlEIABgNuczTADMAMAAIAAQABlEIABgNuczPADMAMAAIAAQABlEIABgNuczLADMAMAAIAAQABlEIABgNuczHADAAAKRAAAACAAAAA",
+                            "msg_size": 111,
+                            "time_elapsed": 18,
+                            "history": []
+                        }
+                    }
+                }
+            },
+            {
+                "qname": "google.com.",
+                "qclass": "IN",
+                "qtype": "DS",
+                "options": {
+                    "flags": 256,
+                    "edns_version": 0,
+                    "edns_max_udp_payload": 4096,
+                    "edns_flags": 32768,
+                    "edns_options": [
+                        [
+                            10,
+                            "a1bfcf40811d419acccccccccccccccc"
+                        ]
+                    ],
+                    "tcp": false
+                },
+                "responses": {
+                    "192.168.1.254": {
+                        "192.168.1.65": {
+                            "message": "uQOBgAABAAAABgABBmdvb2dsZQNjb20AACsAAcATAAYAAQAAA4QAPQFhDGd0bGQtc2VydmVycwNuZXQABW5zdGxkDHZlcmlzaWduLWdyc8ATXq5TXQAABwgAAAOEAAk6gAABUYDAEwAuAAEAAAOEALcABggBAAADhF63jd1erkL1m6QDY29tAExivwXJDo8McqTFufgP0++tEsMCdI6G+bFJqQuycMNeKeMgICX5R+c8QuuPsxcefTyVSA58bZ4R4nF1y1ekqQAeg5ZZb7ECZY12sARWbevntrLEC7TTqa9uBd+tOnrXiSEBWUXk0PPdRVMBEq5gRqPutpANk0qIIfdHHELmcZt1GfNQHAE+gwuK3lptwnDw4dCNQWMSrqMDmwi6u18mtgYgQ0swUE9KTUc4NzRMSlJFRjdFRk44NDMwUVZJVDhCU03AEwAuAAEAAAOEALcAMggCAAFRgF62Nk9erOtnm6QDY29tAE7luxrcntuiYsxJ0IBUdsMdImkjXldAfh/jRsaTLxK11QvFIGNKopGWMENnnQKCwoNTVF/nkHulycQoOn8WV4Jo2Od5xa70veg1QJpcx1yDBkWc/Vy2+q9XTOWvRZo1o+/wHfAixVOLSmgEQD9Xi+1wLhQyMTqrhQZa9ns7M3pFPFwnzj16BQ1QURBcU21JkdPQ3GvmRyuWkJm/ttqs6+jBKAAyAAEAAAOEACMBAQAAABRlAaDCVyDuFW9sTjljazraAxLZKgAHIgAAAAACkCBTODRCRFZLTkg1QUdEU0k3RjVKME8zTlBSSFUwRzdKUcATAC4AAQAAA4QAtwAyCAIAAVGAXreHNV6uPE2bpANjb20AcOlWkh4wuatRqvBtpSSw5qb71ucwWmzFQjcvTKmn63NP+Gd9DShK/r0wymiVFF2nsRtcZfm6BrYi3bXJeFPVx6eaS1h92fQRKY4xma5oZW64DfikUPA5Jd0kl8r0fGN8lNSumWtM1+3wGlrzq1IyVXrTZkGpLoTI4iAVynj9xV+f39WWCefRn14SNGfNAGNfOtu6LTblJRf/9S+8IpWVcMI7ADIAAQAAA4QAIgEBAAAAFOIIxv+J/nblNe01KHy1TYgsaWERAAYgAAAAABIAACkQAAAAgAAAAA==",
+                            "msg_size": 856,
+                            "time_elapsed": 28,
+                            "history": []
+                        }
+                    }
+                }
+            },
+            {
+                "qname": "google.com.",
+                "qclass": "IN",
+                "qtype": "DNSKEY",
+                "options": {
+                    "flags": 256,
+                    "edns_version": 0,
+                    "edns_max_udp_payload": 4096,
+                    "edns_flags": 32768,
+                    "edns_options": [
+                        [
+                            10,
+                            "a1bfcf40811d419acccccccccccccccc"
+                        ]
+                    ],
+                    "tcp": false
+                },
+                "responses": {
+                    "192.168.1.254": {
+                        "192.168.1.65": {
+                            "message": "XxGBgAABAAAAAQABBmdvb2dsZQNjb20AADAAAcAMAAYAAQAAADwAJgNuczHADAlkbnMtYWRtaW7ADBJzP9gAAAOEAAADhAAABwgAAAA8AAApEAAAAIAAAAA=",
+                            "msg_size": 89,
+                            "time_elapsed": 44,
+                            "history": []
+                        }
+                    }
+                }
+            },
+            {
+                "qname": "google.com.",
+                "qclass": "IN",
+                "qtype": "DNSKEY",
+                "options": {
+                    "flags": 256,
+                    "edns_version": 0,
+                    "edns_max_udp_payload": 512,
+                    "edns_flags": 32768,
+                    "edns_options": [
+                        [
+                            10,
+                            "a1bfcf40811d419acccccccccccccccc"
+                        ]
+                    ],
+                    "tcp": false
+                },
+                "responses": {
+                    "192.168.1.254": {
+                        "192.168.1.65": {
+                            "message": "XxGBgAABAAAAAQABBmdvb2dsZQNjb20AADAAAcAMAAYAAQAAADwAJgNuczHADAlkbnMtYWRtaW7ADBJzP9gAAAOEAAADhAAABwgAAAA8AAApEAAAAIAAAAA=",
+                            "msg_size": 89,
+                            "time_elapsed": 44,
+                            "history": []
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    "l.google.com.": {
+        "type": "recursive",
+        "stub": false,
+        "cookie_standin": "cccccccccccccccc",
+        "cookie_bad": "bbbbbbbbbbbbbbbb",
+        "analysis_start": "2020-05-03 05:15:36 UTC",
+        "analysis_end": "2020-05-03 05:15:38 UTC",
+        "clients_ipv4": [
+            "192.168.1.65"
+        ],
+        "clients_ipv6": [],
+        "parent": "google.com.",
+        "cookie_rdtype": "A",
+        "explicit_delegation": true,
+        "auth_ns_ip_mapping": {
+            "ns0.": [
+                "192.168.1.254"
+            ]
+        },
+        "queries": [
+            {
+                "qname": "l.google.com.",
+                "qclass": "IN",
+                "qtype": "NS",
+                "options": {
+                    "flags": 256,
+                    "edns_version": 0,
+                    "edns_max_udp_payload": 4096,
+                    "edns_flags": 32768,
+                    "edns_options": [
+                        [
+                            10,
+                            "a1bfcf40811d419acccccccccccccccc"
+                        ]
+                    ],
+                    "tcp": false
+                },
+                "responses": {
+                    "192.168.1.254": {
+                        "192.168.1.65": {
+                            "message": "VjyBgAABAAQAAAABAWwGZ29vZ2xlA2NvbQAAAgABwAwAAgABAADWQgAGA25zMcAOwAwAAgABAADWQgAGA25zMsAOwAwAAgABAADWQgAGA25zNMAOwAwAAgABAADWQgAGA25zM8AOAAApEAAAAIAAAAA=",
+                            "msg_size": 113,
+                            "time_elapsed": 18,
+                            "history": []
+                        }
+                    }
+                }
+            },
+            {
+                "qname": "l.google.com.",
+                "qclass": "IN",
+                "qtype": "DS",
+                "options": {
+                    "flags": 256,
+                    "edns_version": 0,
+                    "edns_max_udp_payload": 4096,
+                    "edns_flags": 32768,
+                    "edns_options": [
+                        [
+                            10,
+                            "a1bfcf40811d419acccccccccccccccc"
+                        ]
+                    ],
+                    "tcp": false
+                },
+                "responses": {
+                    "192.168.1.254": {
+                        "192.168.1.65": {
+                            "message": "QI6BkgABAAAAAAAAAWwGZ29vZ2xlA2NvbQAAKwAB",
+                            "msg_size": 30,
+                            "time_elapsed": 565,
+                            "history": [
+                                {
+                                    "time_elapsed": 525,
+                                    "cause": "INVALID_RCODE",
+                                    "cause_arg": 2,
+                                    "action": "SET_FLAG",
+                                    "action_arg": 16
+                                },
+                                {
+                                    "time_elapsed": 669,
+                                    "cause": "INVALID_RCODE",
+                                    "cause_arg": 2,
+                                    "action": "DISABLE_EDNS"
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            {
+                "qname": "l.google.com.",
+                "qclass": "IN",
+                "qtype": "DNSKEY",
+                "options": {
+                    "flags": 256,
+                    "edns_version": 0,
+                    "edns_max_udp_payload": 4096,
+                    "edns_flags": 32768,
+                    "edns_options": [
+                        [
+                            10,
+                            "a1bfcf40811d419acccccccccccccccc"
+                        ]
+                    ],
+                    "tcp": false
+                },
+                "responses": {
+                    "192.168.1.254": {
+                        "192.168.1.65": {
+                            "message": "b4iBgAABAAAAAQABAWwGZ29vZ2xlA2NvbQAAMAABwAwABgABAAAAPAAmA25zMcAOCWRucy1hZG1pbsAOEnM/2AAAA4QAAAOEAAAHCAAAADwAACkQAAAAgAAAAA==",
+                            "msg_size": 91,
+                            "time_elapsed": 44,
+                            "history": []
+                        }
+                    }
+                }
+            },
+            {
+                "qname": "l.google.com.",
+                "qclass": "IN",
+                "qtype": "DNSKEY",
+                "options": {
+                    "flags": 256,
+                    "edns_version": 0,
+                    "edns_max_udp_payload": 512,
+                    "edns_flags": 32768,
+                    "edns_options": [
+                        [
+                            10,
+                            "a1bfcf40811d419acccccccccccccccc"
+                        ]
+                    ],
+                    "tcp": false
+                },
+                "responses": {
+                    "192.168.1.254": {
+                        "192.168.1.65": {
+                            "message": "b4iBgAABAAAAAQABAWwGZ29vZ2xlA2NvbQAAMAABwAwABgABAAAAPAAmA25zMcAOCWRucy1hZG1pbsAOEnM/2AAAA4QAAAOEAAAHCAAAADwAACkQAAAAgAAAAA==",
+                            "msg_size": 91,
+                            "time_elapsed": 45,
+                            "history": []
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    "googlemail.l.google.com.": {
+        "type": "recursive",
+        "stub": false,
+        "cookie_standin": "cccccccccccccccc",
+        "cookie_bad": "bbbbbbbbbbbbbbbb",
+        "analysis_start": "2020-05-03 05:15:36 UTC",
+        "analysis_end": "2020-05-03 05:15:36 UTC",
+        "clients_ipv4": [
+            "192.168.1.65"
+        ],
+        "clients_ipv6": [],
+        "parent": "l.google.com.",
+        "cookie_rdtype": "A",
+        "explicit_delegation": true,
+        "queries": [
+            {
+                "qname": "googlemail.l.google.com.",
+                "qclass": "IN",
+                "qtype": "A",
+                "options": {
+                    "flags": 256,
+                    "edns_version": 0,
+                    "edns_max_udp_payload": 4096,
+                    "edns_flags": 32768,
+                    "edns_options": [
+                        [
+                            10,
+                            "a1bfcf40811d419a"
+                        ]
+                    ],
+                    "tcp": false
+                },
+                "responses": {
+                    "192.168.1.254": {
+                        "192.168.1.65": {
+                            "message": "/K+BgAABAAEAAAABCmdvb2dsZW1haWwBbAZnb29nbGUDY29tAAABAAHADAABAAEAAACTAASs2QxFAAApEAAAAIAAAAA=",
+                            "msg_size": 68,
+                            "time_elapsed": 17,
+                            "history": []
+                        }
+                    }
+                }
+            },
+            {
+                "qname": "googlemail.l.google.com.",
+                "qclass": "IN",
+                "qtype": "AAAA",
+                "options": {
+                    "flags": 256,
+                    "edns_version": 0,
+                    "edns_max_udp_payload": 4096,
+                    "edns_flags": 32768,
+                    "edns_options": [
+                        [
+                            10,
+                            "a1bfcf40811d419acccccccccccccccc"
+                        ]
+                    ],
+                    "tcp": false
+                },
+                "responses": {
+                    "192.168.1.254": {
+                        "192.168.1.65": {
+                            "message": "2S2BgAABAAEAAAABCmdvb2dsZW1haWwBbAZnb29nbGUDY29tAAAcAAHADAAcAAEAAACEABAmB/iwQAAIFgAAAAAAACAFAAApEAAAAIAAAAA=",
+                            "msg_size": 80,
+                            "time_elapsed": 19,
+                            "history": []
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    "mail.google.com.": {
+        "type": "recursive",
+        "stub": false,
+        "cookie_standin": "cccccccccccccccc",
+        "cookie_bad": "bbbbbbbbbbbbbbbb",
+        "analysis_start": "2020-05-03 05:15:36 UTC",
+        "analysis_end": "2020-05-03 05:15:36 UTC",
+        "clients_ipv4": [
+            "192.168.1.65"
+        ],
+        "clients_ipv6": [],
+        "parent": "google.com.",
+        "cookie_rdtype": "A",
+        "explicit_delegation": true,
+        "queries": [
+            {
+                "qname": "mail.google.com.",
+                "qclass": "IN",
+                "qtype": "A",
+                "options": {
+                    "flags": 256,
+                    "edns_version": 0,
+                    "edns_max_udp_payload": 4096,
+                    "edns_flags": 32768,
+                    "edns_options": [
+                        [
+                            10,
+                            "a1bfcf40811d419a"
+                        ]
+                    ],
+                    "tcp": false
+                },
+                "responses": {
+                    "192.168.1.254": {
+                        "192.168.1.65": {
+                            "message": "/SyBgAABAAIAAAABBG1haWwGZ29vZ2xlA2NvbQAAAQABwAwABQABAALoBgAPCmdvb2dsZW1haWwBbMARwC0AAQABAAAAcQAErNkJBQAAKRAAAACAAAAA",
+                            "msg_size": 87,
+                            "time_elapsed": 18,
+                            "history": []
+                        }
+                    }
+                }
+            },
+            {
+                "qname": "mail.google.com.",
+                "qclass": "IN",
+                "qtype": "AAAA",
+                "options": {
+                    "flags": 256,
+                    "edns_version": 0,
+                    "edns_max_udp_payload": 4096,
+                    "edns_flags": 32768,
+                    "edns_options": [
+                        [
+                            10,
+                            "a1bfcf40811d419acccccccccccccccc"
+                        ]
+                    ],
+                    "tcp": false
+                },
+                "responses": {
+                    "192.168.1.254": {
+                        "192.168.1.65": {
+                            "message": "XNWBgAABAAIAAAABBG1haWwGZ29vZ2xlA2NvbQAAHAABwAwABQABAALoBwAPCmdvb2dsZW1haWwBbMARwC0AHAABAAAAewAQJgf4sEAACAMAAAAAAAAgBQAAKRAAAACAAAAA",
+                            "msg_size": 99,
+                            "time_elapsed": 20,
+                            "history": []
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    "_meta._dnsviz.": {
+        "version": 1.2,
+        "names": [
+            "mail.google.com."
+        ]
+    }
+}
