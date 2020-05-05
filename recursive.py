@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 import math
 import json
-import ipaddress as ipaddress
 from ipaddress import IPv4Address, AddressValueError
+import socket, struct
 
 def is_ipv4_only(addr): #filtering for ipv6
     try:
@@ -15,7 +15,10 @@ def is_ipv4_only(addr): #filtering for ipv6
         return True
     except AddressValueError:
         return False
-    
+def ip2long(ip):
+    packedIP = socket.inet_aton(ip)
+    return struct.unpack("!L", packedIP)[0]
+
 class Node:
     def __init__(self, id, address):
         self.id = id
@@ -27,25 +30,29 @@ class NodeList:
         self.path_to_file = path_to_file
         self.nodes = []
         self.data = {}
+        self.level = []
     def initializeList(self):
         #reads from file and puts into a dictionary
         with open(self.path_to_file) as json_file:
             self.data = json.load(json_file)
+            del self.data['_meta._dnsviz.']
+        self.levels = list(self.data)
+        domainName = self.data[self.levels[len(self.levels)-1]]
         ip_mapping = {}
-        self.nodes.append(Node(1, self.data['google.com.']['clients_ipv4'][0]))
-        ip_mapping[self.data['google.com.']['clients_ipv4'][0]] = 1
-        queries = self.data['google.com.']['queries']
+        self.nodes.append(Node(1, ip2long(domainName['clients_ipv4'][0]))) #self.data[self.levels[pineapple-1]]
+        ip_mapping[ip2long(domainName['clients_ipv4'][0])] = 1
+        queries = domainName['queries']
         for query in queries:
             responses = query['responses']
             for ip, message in responses.items():
                 if is_ipv4_only(ip):
                     if ip not in ip_mapping.keys():
                         ip_mapping[ip] = len(ip_mapping)+1
-                        self.nodes.append(Node(ip_mapping[ip], ip))
-                    print(len(ip_mapping))
-        self.nodes.append(Node(3, '255.255.255.0'))
-        self.nodes.append(Node(3, '192.168.1.200'))
-        self.nodes.append(Node(3, '192.168.1.254'))
+                        self.nodes.append(Node(ip_mapping[ip], ip2long(ip)))
+#                    print(len(ip_mapping))
+        self.nodes.append(Node(3, ip2long('100.168.1.200')))
+        self.nodes.append(Node(3, ip2long('192.168.1.254')))
+        self.nodes.append(Node(3, ip2long('255.255.255.0')))
         print(self.nodes)
     def getNodeIds(self):
         ids = []
@@ -75,7 +82,6 @@ if __name__ == '__main__':
     serverImage = OffsetImage(plt.imread('server.png'), zoom=0.05)
     
     x = sample.getNodeIds()
-#    y = int(ipaddress.IPv4Address(sample.getAddress()))
     y = sample.getAddress()
     fig, ax = plt.subplots()
     sc = plt.scatter(x, y, marker="+", color='#999999')
@@ -100,8 +106,6 @@ if __name__ == '__main__':
     ax.set_ylabel('Node Address', labelpad=15) #ip address
     xint = range(min(x)-1, math.ceil(max(x))+2)
     plt.xticks(xint)
-#    plt.ylim('0.0.0.0', '255.255.255.255')
-#    plt.xlim(0, 25)
     
     def update_annot(ind):
         pos = sc.get_offsets()[ind["ind"][0]]
@@ -125,5 +129,5 @@ if __name__ == '__main__':
                     annot.set_visible(False)
                     fig.canvas.draw_idle()
     fig.canvas.mpl_connect("motion_notify_event", hover)
-    fig.savefig("output.png",bbox_inches='tight')
+#    fig.savefig("output.png",bbox_inches='tight')
     plt.show()
