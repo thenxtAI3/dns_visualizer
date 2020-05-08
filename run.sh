@@ -11,6 +11,8 @@ echo 'Probe complete.'
 
 echo 'Running script...'
 
-python graph.py $query
+python recursive.py $query
+
+python authoritative.py $query
 
 echo 'Thanks for playing!'
