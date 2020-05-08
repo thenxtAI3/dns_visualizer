@@ -7,53 +7,55 @@ import json
 import sys
 
 class Node:
-    def __init__(self, name, ns_mappings, queries):
-        self.name = name
-        self.ns_mappings = ns_mappings
-        self.queries = queries # self.queries[0]['qname'] --> '.'
-        self.coord = ()
+	def __init__(self, name, queries):
+		self.name = name
+		self.ns_mappings = {}
+		self.queries = queries # self.queries[0]['qname'] --> '.'
+		self.coord = ()
+		self.qname = []
+		self.qclass = []
+		self.qtype = []
+		self.ips = []
 
-        flip_dict = {}
-    	for name, ip in self.ns_mappings.iteritems():
-    		flip_dict[ip[0]] = name
-    		print(ip[0] + " - " + name)
+		
 
-    	self.ns_mappings = flip_dict
+	def get_coords(self):
+		return self.coord
 
-    def get_coords(self):
-    	return self.coord
+	def set_coords(self, x, y):
+		self.coord = (x, y)
 
-    def set_coords(self, x, y):
-    	self.coord = (x, y)
+	def get_mapping(self):
+		return self.ns_mappings
 
-    def get_mapping(self):
-    	return self.ns_mappings
+	def set_mapping(self, mapping):
+		flip_dict = {}
+		for name, ip in self.ns_mappings.iteritems():
+			flip_dict[ip[0]] = name
+			print(ip[0] + " - " + name)
 
-    def set_mapping(self, mapping):
-    	self.ns_mappings = mapping
+		self.ns_mappings = flip_dict
 
-    def get_info(self):
+	def get_info(self):
+		info = ''
+		info += "Server Name: " + self.name + "\n"
 
-    	info = ''
-    	info += self.name
+		if self.qclass:
+			info += "qClass: " + self.qclass[0] + "\n"
 
-    	#ex. 
-    	if self.ns_mappings: # since they won't always have all fields
-    		info += '\nNS_MAPPINGS--------------------\n'
-    		for name, ip in self.ns_mappings.iteritems():
-    			info += name + '\n' + str(ip)
-    			info += '\n-------------------------------\n'
-    		info += '\n'
-    	
-		#################################################### 
-		#												   #
-		#												   #
-		# 				SETSUKA'S CODE HERE 			   #
-		#												   # 
-		# 												   #
-		####################################################
-    	#
-    	return info
+		if self.qtype:
+			info += "qType: " + ", ".join(list(set(self.qtype))) + "\n"
+
+		if self.ips:
+			info += "IPs Contacted: \n"+  "\n".join(self.ips) + "\n"
+
+			try:
+				name_servers = [self.ns_mappings[ip] for ip in self.ips]  #contacted name servers using flip_dict
+				info += "Name Servers Contacted: \n" + "\n".join(name_servers)
+			except KeyError:
+				pass
+
+		return info
 
 class Nodelist:
 	def __init__(self, file_path, query):
@@ -107,7 +109,15 @@ class Nodelist:
 			if 'queries' in node:
 				queries = node['queries']
 
-			new_node = Node(node_name, ns_mappings, queries)
+			new_node = Node(node_name, queries)
+			new_node.set_mapping(ns_mappings)
+
+			for subquery in queries:
+				new_node.qname.append(subquery['qname'])  # qname
+				new_node.qclass.append(subquery['qclass'])  # qclass
+				new_node.qtype.append(subquery['qtype'])  # qtype
+				contacted_ips = list(subquery['responses'].keys())
+				new_node.ips = contacted_ips			
 		
 			self.nodes.append(new_node)
 
@@ -135,9 +145,9 @@ class Nodelist:
 				server_y_coord -= offset
 				# print(node.ns_mappings)
 
-		client_node = Node('client [' + client_ipv4 + ']', {}, {})
+		client_node = Node('client [' + client_ipv4 + ']', {})
 		client_node.set_coords(2, 15)
-		host_node = Node('[host]', {}, {})
+		host_node = Node('[host]', {})
 		host_node.set_coords(1.5, 15)
 
 		self.nodes = [host_node, client_node] + self.nodes
@@ -151,8 +161,8 @@ class Nodelist:
 		self.parse_json()
 		self.index_nodes()
 
-		for node in self.nodes:
-			print(node.name + ': ' + str(node.coord))
+		# for node in self.nodes:
+		# 	print(node.name + ': ' + str(node.coord))
 
 		return self.nodes
 
