@@ -182,13 +182,13 @@ def script():
 	tld = 3
 	auth = 4
 
-	hostImage = OffsetImage(plt.imread('host.png'), zoom=0.12)
-	clientImage = OffsetImage(plt.imread('resolver.png'), zoom=0.12)
-	rootImage = OffsetImage(plt.imread('root.png'), zoom=0.12)
-	tldImage = OffsetImage(plt.imread('tld.png'), zoom=0.12)
-	targetImage = OffsetImage(plt.imread('target.png'), zoom=0.12)
-	subImage = OffsetImage(plt.imread('sub.png'), zoom=0.12)
-	authImage = OffsetImage(plt.imread('auth.png'), zoom=0.12)
+	hostImage = OffsetImage(plt.imread('host.png'), zoom=0.10)
+	clientImage = OffsetImage(plt.imread('resolver.png'), zoom=0.10)
+	rootImage = OffsetImage(plt.imread('root.png'), zoom=0.10)
+	tldImage = OffsetImage(plt.imread('tld.png'), zoom=0.10)
+	targetImage = OffsetImage(plt.imread('target.png'), zoom=0.10)
+	subImage = OffsetImage(plt.imread('sub.png'), zoom=0.10)
+	authImage = OffsetImage(plt.imread('auth.png'), zoom=0.10)
 
 
 	x_list = []
@@ -263,7 +263,7 @@ def script():
 		annot.xy = (4.5, 0.5)
 		text = str(node.get_info())
 		annot.set_text(text)
-		annot.get_bbox_patch().set_alpha(0.4)  # of the specific annotation box ut gets the value
+		annot.get_bbox_patch().set_alpha(1.0)  # of the specific annotation box ut gets the value
 
 	def hover(event):
 		vis = annot.get_visible()
