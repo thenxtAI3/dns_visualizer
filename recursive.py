@@ -66,8 +66,9 @@ class Node:
     def __repr__(self):
         return "Node id:% s address:% s" % (self.id, self.address)
 class NodeList:
-    def __init__(self, path_to_file):
+    def __init__(self, path_to_file, argument):
         self.path_to_file = path_to_file
+        self.argument = argument
         self.nodes = []
         self.temp_nodes = []
         self.data = {}
@@ -78,6 +79,14 @@ class NodeList:
             self.data = json.load(json_file)
             del self.data['_meta._dnsviz.']
         self.level = list(self.data)
+        self.level.sort(key=len)
+        temp = {}
+        for l in self.level:
+            if (l == self.argument):
+                temp = l
+                self.level.remove(l)
+                break
+        self.level.append(temp)
         domainName = self.data[self.level[len(self.level)-1]]
         ip_mapping = {}
         self.nodes.append(Node(1, domainName['clients_ipv4'][0]))
@@ -115,7 +124,7 @@ class NodeList:
         recursive.set_server_type("Recursive")
         recursive.set_response_time(responses[outerIP][innerIP]['time_elapsed'])
         recursive.set_msg_size(responses[outerIP][innerIP]['msg_size'])
-        recursive.set_resolution_process(' -> '.join(data.keys()))
+        recursive.set_resolution_process(' ->\n'.join(self.level))
         
         root.set_server_type("Root")
         root.set_resolution_process(self.level[0])
@@ -157,17 +166,17 @@ class NodeList:
         
 def update_annot(ind):
     pos = sc.get_offsets()[ind["ind"][0]]
-    annot.xy = pos
+    annot.xy = (3.1, 1.5)
     node = sample.get_node_from_hover(pos[0], pos[1])
     if pos[0] == 1.0:
-        text = "IP Address: " + node.address + "\nServer Type: " + node.server_type
+        text ="IP Address: " + node.address + "\nServer Type: " + node.server_type
     elif pos[0] == 2.0:
-        text = "IP Address: " + node.address + "\nServer Type: " + node.server_type + "\nResponse Time: " + str(node.response_time) + "\nMessage Size: " + str(node.msg_size) + "\nResolution Process: " + node.resolution
+        text = "IP Address: " + node.address + "\nServer Type: " + node.server_type + "\nResponse Time: " + str(node.response_time) + "\nMessage Size: " + str(node.msg_size) + "\nResolution Process:\n" + node.resolution
     else:
         text = "\nServer Type: " + node.server_type + "\nResolution Process: " + node.resolution
     annot.set_text(text)
     annot.get_bbox_patch().set_facecolor('#BDD4B2')
-    annot.get_bbox_patch().set_alpha(0.4)  # of the specific annotation box ut gets the value
+    annot.get_bbox_patch().set_alpha(1.0)  # of the specific annotation box ut gets the value
     
 def hover(event):
     vis = annot.get_visible()
@@ -182,22 +191,22 @@ def hover(event):
                 annot.set_visible(False)
                 fig.canvas.draw_idle()
 if __name__ == '__main__':
-    sample = NodeList("rec.json")
+    sample = NodeList("rec.json", str(sys.argv[1]) + '.')
     sample.initializeList()
     rose = sample.getCoordinates()
     sample.create_Nodes(sample.data)
 
     sns.set(style="white")
-    clientImage = OffsetImage(plt.imread('host.png'), zoom=0.05)
-    serverImage = OffsetImage(plt.imread('server.png'), zoom=0.05)
-    greyImage = OffsetImage(plt.imread('grey.png'), zoom=0.05)
+    clientImage = OffsetImage(plt.imread('host.png'), zoom=0.10)
+    serverImage = OffsetImage(plt.imread('server.png'), zoom=0.10)
+    greyImage = OffsetImage(plt.imread('grey.png'), zoom=0.10)
     
     x = sample.getNodeIds()
     y = sample.getAddress()
     fig, ax = plt.subplots(figsize=(9, 6))
-    sc = plt.scatter(x, y, marker="s", color='#FFFFFF', s = 400)
+    sc = plt.scatter(x, y, marker="s", color='#FFFFFF', s = 2000)
 
-    props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
+    props = dict(boxstyle='round', facecolor='white', alpha=1.0)
     annot = ax.annotate("", xy=(0,0), xytext=(20,20),textcoords="offset points", bbox=props, arrowprops=dict(arrowstyle="->"))
             
     for x0, y0 in zip(x, y):
